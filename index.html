@@ -1,1 +1,55 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ff3b00"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="SP70 Тест"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>SP70 Section 5 — TRASHER Quiz</title><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon-192.png"><link rel="icon" href="icons/icon-192.png"><link rel="stylesheet" href="styles.css"></head><body><div class="wrap"><section class="hero"><div class="brand"><div class="logo"><small>АО «КОНЦЕРН»</small><b>TITAN-2</b></div><div class="badge">TRASHER MODE</div><div class="badge">СП 70 • Раздел 5</div></div><h1>Бетонный<br>замес</h1><p>Многослойный тренажер по разделу 5 СП 70. Каждый запуск собирает новый вариант из базы: перемешиваются вопросы и ответы. Есть одиночные и мультивыборные вопросы, разбор ошибок и сохранение попыток на устройстве.</p><div class="stats"><div class="stat"><b id="bank">—</b><span>вопросов в базе</span></div><div class="stat"><b>40</b><span>вопросов в попытке</span></div><div class="stat"><b>5+</b><span>ответов в каждом вопросе</span></div><div class="stat"><b id="attempts">0</b><span>попыток</span></div></div></section><section class="install"><b>Установка на iPhone:</b> открой через Safari с веб-адреса → «Поделиться» → «Добавить на экран Домой». Если открыть как файл из Files/ChatGPT, iOS может заблокировать JavaScript.</section><div class="toolbar"><button class="btn" id="newBtn" type="button">Новый замес</button><button class="btn secondary" id="checkBtn" type="button">Проверить</button><button class="btn secondary" id="wrongBtn" type="button">Ошибки</button><div class="progress"><div class="bar"><div class="fill" id="fill"></div></div><small id="prog">0 / 40 отвечено</small></div><div class="status" id="status">Запуск…</div></div><div id="result" class="result"></div><div id="filters" class="filters"></div><div id="debug" class="debug"></div><main id="quiz" class="quiz"><div class="empty">Если тест не собрался, страница открыта не как сайт. Нужен Safari/HTTPS, а не предпросмотр файла.</div></main><p style="color:#bfa89b;font-size:13px">Логоблок TITAN-2 — стилизованная текстовая вставка, не официальный бренд-файл.</p></div><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070303" />
+  <title>СП70 / Раздел 5 — бетонные работы</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+</head>
+<body>
+  <div class="fire-bg" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <header class="hero">
+    <div class="brandline">
+      <div class="titan-logo"><b>АО</b><span>КОНЦЕРН</span><strong>ТИТАН‑2</strong></div>
+      <div class="badge">СП 70.13330.2012 · раздел 5</div>
+    </div>
+    <h1>БЕТОННЫЕ РАБОТЫ</h1>
+    <p>Многослойный тренажер строго по разделу 5 СП70. Вопросы собираются случайно: 10 из базы, ответы перемешиваются, после проверки показывается пункт СП и нормативная опора.</p>
+    <div id="jsStatus" class="status warn">JavaScript еще не запущен</div>
+  </header>
+
+  <main class="app">
+    <section class="panel control-panel">
+      <div>
+        <h2>Режим</h2>
+        <p>Сложный вариант: одиночные и множественные ответы. Вопрос засчитывается только при точном выборе всех правильных ответов.</p>
+      </div>
+      <div class="controls">
+        <button id="buildBtn" type="button">Новый замес</button>
+        <button id="checkBtn" type="button" class="primary">Проверить</button>
+        <button id="wrongBtn" type="button">Повторить ошибки</button>
+      </div>
+    </section>
+
+    <section id="summary" class="summary hidden" aria-live="polite"></section>
+    <section id="quiz" class="quiz"></section>
+  </main>
+
+  <template id="schemeTemplate">
+    <svg viewBox="0 0 720 260" role="img" aria-label="Схема к вопросу">
+      <defs>
+        <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#ff4b00"/><stop offset="1" stop-color="#ffd15a"/></linearGradient>
+      </defs>
+      <rect x="0" y="0" width="720" height="260" rx="26" fill="#150705" stroke="#ff4b00" stroke-width="3"/>
+    </svg>
+  </template>
+
+  <footer>
+    Учебный тренажер. Формулировки вопросов составлены по разделу 5 СП 70.13330.2012 с учетом Изм. №7. Короткие цитаты используются только как основание к ответу.
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
